@@ -30,7 +30,6 @@ public class ItemTouchHelperCallback extends ItemTouchHelper.Callback {
     private RecyclerView.ViewHolder currenrtItemViewHolder = null;
     private boolean swipeBack = false;
 
-
     public ItemTouchHelperCallback(ItemTouchHelperListener listener){
         this.listener = listener;
     }
@@ -54,8 +53,7 @@ public class ItemTouchHelperCallback extends ItemTouchHelper.Callback {
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder , int direction){
         listener.onItemSwipe(viewHolder.getAdapterPosition());
     }
-
-
+    
     ///////////////////////////////////////////////////
     @Override
     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder,
