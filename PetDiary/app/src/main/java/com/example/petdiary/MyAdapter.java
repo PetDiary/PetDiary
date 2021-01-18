@@ -43,10 +43,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     StorageReference pathReference;
     String nick;
 
-
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView textView;
@@ -81,18 +77,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return 0;
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
     public MyAdapter(ArrayList<Chat> myDataset, String stEmail, String nick) {
         mDataset = myDataset;
         this.stMyEmail = stEmail;
         this.nick = nick;
     }
 
-    // Create new views (invoked by the layout manager)
     @Override
     public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                      int viewType) {
-        // create a new view
+
         View v =  LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.right_text_view, parent, false);
         if(viewType == 2){
@@ -112,8 +106,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return vh;
     }
 
-
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -147,10 +139,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                             }
                         });
 
-
             }
             holder.textView.setText(mDataset.get(position).getText());
-
 
         } else if (mDataset.get(position).getText() == null) {
             if(holder.nickView != null){
@@ -204,8 +194,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
                 }
             });
-
-
+            
         }
     }
     // Return the size of your dataset (invoked by the layout manager)
